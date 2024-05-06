@@ -11,6 +11,7 @@ This is a TypeScript Express template project. It provides a basic structure for
 - Express.js server setup
 - Basic project structure
 - Ready-to-use configuration files
+- CI/CD with GitHub Actions and Husky
 
 ## Installation
 
