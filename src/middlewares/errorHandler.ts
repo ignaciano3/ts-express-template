@@ -14,6 +14,8 @@ export function errorHandler(
   res: Response,
   _next: NextFunction,
 ) {
+  // If we are receiving a 200 status code here, it means
+  // we have a ploblem. 200s should be handled before.
   const statusCode =
     res.statusCode !== statusCodes.OK
       ? res.statusCode
