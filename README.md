@@ -15,7 +15,7 @@ This is a TypeScript Express template project. It provides a basic structure for
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+1. Clone the repository: `git clone https://github.com/ignaciano3/ts-express-template.git`
 2. Install dependencies: `npm install`
 
 ## Usage
