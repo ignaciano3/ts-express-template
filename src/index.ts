@@ -8,6 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(
-    chalk.cyan(`[server] Server listening on: http://localhost:${PORT}`)
+    chalk.cyan(`[server] Server listening on: http://localhost:${PORT}`),
   );
 });

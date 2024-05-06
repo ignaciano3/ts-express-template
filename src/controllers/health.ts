@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { HealthService } from "../services/health";
 
 const router = Router();
 
 router.get("/health", (req, res) => {
-  res.send("Hello, World!");
+  const health = HealthService.checkHealth();
+  res.send(health);
 });
 
 export default router;

@@ -1,15 +1,33 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { statusCodes } from "../constants/statusCodes";
+
+type ErrorResponse = {
+  message: string;
+  statusCode: number;
+  statusMessage: string;
+  stack?: string;
+};
 
 export function errorHandler(
   err: Error,
   _req: Request,
   res: Response,
+  _next: NextFunction,
 ) {
-  const response =
-    process.env.NODE_ENV !== "production"
-      ? { message: err.message, stack: err.stack, statusCode: res.statusCode }
-      : { message: err.message, statusCode: res.statusCode };
+  const statusCode =
+    res.statusCode !== statusCodes.OK
+      ? res.statusCode
+      : statusCodes.INTERNAL_SERVER_ERROR;
 
-  res.status(statusCodes.INTERNAL_SERVER_ERROR).json(response);
+  const response: ErrorResponse = {
+    message: err.message,
+    statusCode: statusCode,
+    statusMessage: res.statusMessage,
+  };
+
+  if (process.env.NODE_ENV === "development") {
+    response.stack = err.stack;
+  }
+
+  res.status(statusCode).json(response);
 }
